@@ -1,0 +1,35 @@
+
+
+{% load static %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!--<div id="particles-js">--> 
+	{% if latest_images and n %}
+
+			<!--<div class="container">-->
+
+				<div class="row">
+
+					{% for image in latest_images%}			
+						
+						<div id="desc" class="col-sm-12 col-md-6 col-lg-4 col-xl-3" style="min-height:600px;background-image:url('media/{{ image.image }}');">
+						</div>						
+						
+					{% endfor %}
+
+				</div>
+
+			<!--</div>-->
+
+	{% else %}
+		<p>No images found...</p>
+	{% endif %}
+<!--</div>-->
+<!--<script src='{% static "particles.js-master\\particles.js" %}'/>-->
+
+
+
+
