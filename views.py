@@ -6,11 +6,10 @@ from django.template import loader
 # Create your views here.
 def index(request):
 	#latest_images = FileUpload.objects.order_by('-date_added')[:4]
-	latest_images = FileUpload.objects.all()
+	images = FileUpload.objects.all()
 	template = loader.get_template('gallery/index.html')
 	params = {	
-		'latest_images': latest_images,
-		'n' : range(2),
+		'images': images,
 	}
 	nwide = 0
 	return HttpResponse(template.render(params,request))
