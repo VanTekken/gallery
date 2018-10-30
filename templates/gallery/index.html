@@ -1,98 +1,28 @@
-{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>The D is Silent</title>
-  <meta name="description" content="Django gallery presented using a django app">
-  <meta name="author" content="Harry Crawford" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" media="screen" href='{% static "demo/css/style.css" %}'>
-  <style>
-  	#particles-js canvas{
-  		position:absolute;
-  		top:0;
-  		left:0;
-  		z-index:-99;
-  	}
-  	#desc{
-  		background-position: center;
-    	background-clip: content-box;
-  	}
-  	#particles-js{
-  		z-index:88;
-  	}
-  	html{
-  		max-height:100vh;
-  	}
-  	.cent{
-  		margin-top:25vh;
-  	}
-  </style>
-</head>
-<body>
+{% extends "gallery/base.html" %}
 
+{% block content %}
 
+  {% if images %}
 
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+  	<div class="container cent">
 
-<div id="particles-js" style="position:absolute;top:0;left:0;"> 
-{% if images %}
+  		<div class="row">
 
-	<div class="container cent">
+  			{% for image in images %}			
+  				
+  				<div id="desc" class="col-sm-12 col-md-6 col-lg-4 col-xl-3" style="min-height:400px;background-image:url('media/{{ image.image }}');">
+  				</div>						
+  				
+  			{% endfor %}
 
-		<div class="row">
+  		</div>
 
-			{% for image in images %}			
-				
-				<div id="desc" class="col-sm-12 col-md-6 col-lg-4 col-xl-3" style="min-height:400px;background-image:url('media/{{ image.image }}');">
-				</div>						
-				
-			{% endfor %}
+  	</div>
 
-		</div>
+  {% else %}
+  	<p>No images found...</p>
+  {% endif %}
+  </div>
 
-	</div>
-
-{% else %}
-	<p>No images found...</p>
-{% endif %}
-</div>
-<!--
-<script src='{% static "particles.js" %}' type="script/javascript"></script>
--->
-
-
-</div>
-
-<!-- scripts -->
-<script src='{% static "particles.js" %}'></script>
-<script src='{% static "demo/js/app.js" %}''></script>
-
-<!-- stats.js -->
-<script src='{% static "demo/js/lib/stats.js" %}'></script>
-<script>
-  var count_particles, stats, update;
-  stats = new Stats;
-  stats.setMode(0);
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.left = '0px';
-  stats.domElement.style.top = '0px';
-  document.body.appendChild(stats.domElement);
-  count_particles = document.querySelector('.js-count-particles');
-  update = function() {
-    stats.begin();
-    stats.end();
-    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-    }
-    requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-</script>
-
-</body>
-</html>
+{% endblock %}
