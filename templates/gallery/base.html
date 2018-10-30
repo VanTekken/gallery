@@ -34,41 +34,14 @@
 </head>
 <body>
 
-<div id="particles-js" style="position:absolute;top:0;left:0;"> 
 
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-{% block content %}{% endblock %}
+{% block background %}{% block content %}{% endblock %}{% endblock %}
 
-</div>
 
-<!-- scripts -->
-<script src='{% static "particles.js" %}'></script>
-<script src='{% static "demo/js/app.js" %}''></script>
-
-<!-- stats.js -->
-<script src='{% static "demo/js/lib/stats.js" %}'></script>
-<script>
-  var count_particles, stats, update;
-  stats = new Stats;
-  stats.setMode(0);
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.left = '0px';
-  stats.domElement.style.top = '0px';
-  document.body.appendChild(stats.domElement);
-  count_particles = document.querySelector('.js-count-particles');
-  update = function() {
-    stats.begin();
-    stats.end();
-    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-    }
-    requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-</script>
 
 </body>
 </html>
