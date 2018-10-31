@@ -1,6 +1,4 @@
 {% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +31,10 @@
   </style>
 </head>
 <body>
-
-
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-
+{% block header %}{% endblock %}
 {% block background %}{% block content %}{% endblock %}{% endblock %}
 
 
