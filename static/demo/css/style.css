@@ -100,3 +100,12 @@ header{
   background-color:white;
   border:1px solid grey;
 }
+*{
+  font-family:'Roboto', sans-serif;
+}
+.roboto{
+  font-family:'Roboto' !important; 
+}
+.font-white{
+  color:white !important;
+}
