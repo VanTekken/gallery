@@ -11,8 +11,8 @@ class FileUpload(models.Model):
 		return self.image_text
 
 class BackgroundSelection(models.Model):
-	HOMEPAGE = 'index.html'
-	page_name = 'Home'
+	HOMEPAGE = 'gallery/index.html'
+	page_name = 'Particles-js'
 
 	#Need to add background options here and push them into choices for the page model
 
@@ -21,12 +21,14 @@ class BackgroundSelection(models.Model):
 	)
 
 	page = models.CharField(max_length=10, choices=PAGE_CHOICES, default=PAGE_CHOICES[0])
+	
+
 
 	def __str__(self):
 		return self.page_name
 
 
-class Backgrounds(models.Model):
+class Backgrounds(BackgroundSelection):
 	#selection = models.ForeignKey('BackgroundSelection', on_delete=models.CASCADE)
 	background_name = models.CharField(max_length=200)
 	template_url = models.CharField(max_length=200)
@@ -35,7 +37,7 @@ class Backgrounds(models.Model):
 	def __str__(self):
 		return self.background_name
 
-	SELECTION = models.ForeignKey('Backgrounds', on_delete=models.CASCADE)
+	#SELECTION = models.ForeignKey('Backgrounds', on_delete=models.CASCADE)
 
 	#BACKGROUND_OPTS = ((template_url, background_name),)
 
