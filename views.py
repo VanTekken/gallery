@@ -8,11 +8,11 @@ def index(request):
 	#latest_images = FileUpload.objects.order_by('-date_added')[:4]
 	images = FileUpload.objects.all()
 	background = Background.objects.all()
-	#template = loader.get_template('gallery/index.html')
-	template = loader.get_template(background[0].template_url)
+	template = loader.get_template('gallery/index.html')
+	#template = loader.get_template(background[0].template_url)
 	params = {
 		'images': images,
-		'background': background,
+		'background': background[0].template_url,
 	}
 	return HttpResponse(template.render(params,request))
 
