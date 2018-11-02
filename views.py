@@ -1,20 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from gallery.models import FileUpload, Backgrounds
+from gallery.models import Images, Themes
 from django.template import loader
 
 # Create your views here.
 def index(request):
 	#latest_images = FileUpload.objects.order_by('-date_added')[:4]
-	images = FileUpload.objects.all()
-	background = Backgrounds.objects.all()
-	template = loader.get_template('gallery/index.html')
+	x = Images.objects.all()
+	y = Themes.objects.filter(sld=True)[0]
+	z = loader.get_template(y.url)
 	#template = loader.get_template(background[0].template_url)
+
 	params = {
-		'images': images,
-		'background': background.filter(selected=True).template_url,
+		'images': x,
+		'background': y.url,
 	}
-	return HttpResponse(template.render(params,request))
+	return HttpResponse(z.render(params,request))
 
 def desc(r):
 	q = r.GET.get('desc', None)
