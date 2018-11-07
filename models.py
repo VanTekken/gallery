@@ -28,7 +28,8 @@ class Themes(models.Model):
 	#SELECTION = models.ForeignKey('Backgrounds', on_delete=models.CASCADE)
 	#BACKGROUND_OPTS = ((template_url, background_name),)
 
-theme = Themes.objects.create_theme("Particles-js","gallery/particles.html",True)
+#theme = Themes.objects.create_theme("Particles-js","gallery/particles.html",True)
+theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
 
 
 '''
