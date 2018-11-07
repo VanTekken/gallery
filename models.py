@@ -30,6 +30,7 @@ class Themes(models.Model):
 
 theme1 = ["Particles-js","gallery/particles.html",False]
 theme2 = ["Plasma-js","gallery/plasma.html",True]
+
 def db_test(name):
 	q = Themes.objects.filter(nme=name)
 	if len(q)>=1:
@@ -37,16 +38,21 @@ def db_test(name):
 	else:
 		return False
 
-if db_test(theme1[0]):
-	pass
-else:
-	theme = Themes.objects.create_theme("Particles-js","gallery/particles.html",False)
-	
+def involke_theme(theme):
+	if db_test(theme[0]):
+		pass
+	else:
+		create_theme = Themes.objects.create_theme(theme[0],theme[1],theme[2])
+		return create_theme
+
+involke_theme(theme1)
+involke_theme(theme2)
+'''		
 if db_test(theme2[0]):
 	pass
 else:
 	theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
-
+'''
 '''
 class Themes(models.Model):
 	name = models.CharField(max_length=200)
