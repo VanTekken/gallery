@@ -12,7 +12,7 @@ class Images(models.Model):
 
 class ThemesManager(models.Manager):
 	def create_theme(self, nme, url, sld):
-		theme = Themes(nme=nme,url=url,sld=sld)
+		theme = self.create(nme=nme,url=url,sld=sld)
 		return theme
 
 class Themes(models.Model):
@@ -28,9 +28,20 @@ class Themes(models.Model):
 	#SELECTION = models.ForeignKey('Backgrounds', on_delete=models.CASCADE)
 	#BACKGROUND_OPTS = ((template_url, background_name),)
 
-#theme = Themes.objects.create_theme("Particles-js","gallery/particles.html",True)
-theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
+theme1 = ["Particles-js","gallery/particles.html",False]
+theme2 = ["Plasma-js","gallery/plasma.html",True]
+def exists(name):
+	q = Themes.objects.filter(nme=name)
+	if len(q)<1:
+		return False
+	else:
+		return True
 
+if not exists(theme1[0]):
+	theme = Themes.objects.create_theme("Particles-js","gallery/particles.html",False)
+	
+if not exists(theme2[0]):
+	theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
 
 '''
 class Themes(models.Model):
