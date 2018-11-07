@@ -6,16 +6,16 @@ from django.template import loader
 # Create your views here.
 def index(request):
 	#latest_images = FileUpload.objects.order_by('-date_added')[:4]
-	x = Images.objects.all()
-	y = Themes.objects.filter(sld=True)[0]
-	z = loader.get_template(y.url)
-	#template = loader.get_template(background[0].template_url)
-
+	images = Images.objects.all()
+	#background = Backgrounds.objects.all()
+	background = Themes.objects.all()
+	#template = loader.get_template('gallery/index.html')
+	template = loader.get_template(background[0].url)
 	params = {
-		'images': x,
-		'background': y.url,
+		'images': images,
+		'background': background.filter(sld=True)[0].url,
 	}
-	return HttpResponse(z.render(params,request))
+	return HttpResponse(template.render(params,request))
 
 def desc(r):
 	q = r.GET.get('desc', None)
