@@ -30,17 +30,21 @@ class Themes(models.Model):
 
 theme1 = ["Particles-js","gallery/particles.html",False]
 theme2 = ["Plasma-js","gallery/plasma.html",True]
-def exists(name):
+def db_test(name):
 	q = Themes.objects.filter(nme=name)
-	if len(q)<1:
-		return False
-	else:
+	if len(q)>=1:
 		return True
+	else:
+		return False
 
-if not exists(theme1[0]):
+if db_test(theme1[0]):
+	pass
+else:
 	theme = Themes.objects.create_theme("Particles-js","gallery/particles.html",False)
 	
-if not exists(theme2[0]):
+if db_test(theme2[0]):
+	pass
+else:
 	theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
 
 '''
