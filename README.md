@@ -21,6 +21,7 @@ C:\> git clone https://github.com/vantekken/gallery
 1. Open up [site_name]/urls.py and add the following:
 ```python
 from django.urls import include
+...
 urlpatterns += [
     path('gallery/', include('gallery.urls')),
 ]
