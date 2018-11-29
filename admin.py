@@ -2,8 +2,9 @@ from django.contrib import admin
 from .models import Images,Themes
 
 # Register your models here.
-admin.site.register(Images)
-admin.site.register(Themes)
+
+#admin.site.register(Images)
+#admin.site.register(Themes)
 
 #@admin.register(Background)
 
