@@ -53,22 +53,3 @@ if db_test(theme2[0]):
 else:
 	theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
 '''
-'''
-class Themes(models.Model):
-	name = models.CharField(max_length=200)
-	directory = models.Charfield(max_length=200)
-
-	#HOMEPAGE = 'gallery/index.html'
-	#page_name = 'Particles-js'
-
-	Need to add background options here and push them into choices for the page model
-	
-	PAGE_CHOICES = (
-		(HOMEPAGE, page_name),
-	)
-	
-	page = models.CharField(max_length=10, choices=PAGE_CHOICES, default=PAGE_CHOICES[0])
-	
-	def __str__(self):
-		return self.name
-'''
