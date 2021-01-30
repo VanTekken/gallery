@@ -4,6 +4,8 @@ Note: Tested on Django 2.2 only. To install a specific version of Django, do the
 1. Uninstall your current version `sudo pip uninstall django`
 2. Install version 2.2 specifically `sudo pip install django==2.2`
 
+This project makes use of [ParticlesJS](https://github.com/VincentGarreau/particles.js/)
+
 Dependencies:
 + Bootstrap4 `sudo python3 -m pip install django-bootstrap4`
 + particles-js - installed in STATIC_ROOT
