@@ -59,10 +59,12 @@ python manage.py migrate gallery
 ```
 C:\> python manage.py createsuperuser
 ```
-### Fireup
+### Start Server
 ```
 C:\> python manage.py runserver 8000
 ```
 > Browse to http://127.0.0.1:8000/gallery/
 
-### Note: currently, you'll be greated with an error message when loading for the first time. This is because a theme must be selected via the admin portal. Go to 127.0.0.1/portal, login using a superuser account, go the Themess and check 'sld' for your chosen theme.
+## To-do
+1. Add requirements.txt
+2. Remove ParticlesJS from repo and install as a requirement
