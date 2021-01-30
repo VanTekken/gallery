@@ -1,9 +1,15 @@
 # Gallery app for the Django framework.
 
-So you're gonna need Django (obviously), particles-js in your STATIC_ROOT, and configure your URLS.conf file to include gallery.urls. 
-Currently only works in a Django dev environment.
-You may need to use Django shell to remove QuerySets and upload your own via the /admin portal :)
-Also requires django-bootstrap4
+Note: Tested on Django 2.2 only. To install a specific version of Django, do the following:
+1. Uninstall your current version `sudo pip uninstall django`
+2. Install version 2.2 specifically `sudo pip install django==2.2`
+
+Dependencies:
++ Bootstrap4 `sudo python3 -m pip install django-bootstrap4`
++ particles-js - installed in STATIC_ROOT
+
+*Add configuration step instruct users to point to gallery.urls from within the parent application.
+*You may need to use Django shell to remove QuerySets and upload your own via the /admin portal
 
 ## Getting Started
 
@@ -23,28 +29,31 @@ C:\> git clone https://github.com/vantekken/gallery
 from django.urls import include
 ...
 urlpatterns += [
-    path('gallery/', include('gallery.urls')),
+    path('', include('gallery.urls')),
 ]
-```
-2. Open up gallery/admin.py and add:
-```python 
-admin.site.register(FileUpload)
 ```
 3. Go into your settings file ([site_name]/settings.py), add the gallery app and bootstrap to Installed_Apps:
 ```
 INSTALLED_APPS = [
     ...
-    'bootstrap4',
+    'django-bootstrap4',
     'gallery.apps.GalleryConfig',
     ...
 ]
 ```
+> Be sure to install django-boostrap using pip if you haven't already
 ### Make the database migrations:
 ```
-C:\> python manage.py makemigrations
+python manage.py makemigrations
 ```
 ```
-C:\> python manage.py migrate
+python manage.py migrate
+```
+```
+python manage.py makemigrations gallery
+```
+```
+python manage.py migrate gallery
 ```
 ### Create a superuser
 ```

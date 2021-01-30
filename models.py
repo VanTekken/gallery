@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Images(models.Model):
 
 	image_text = models.CharField(max_length=200)
@@ -44,12 +43,12 @@ def involke_theme(theme):
 	else:
 		create_theme = Themes.objects.create_theme(theme[0],theme[1],theme[2])
 		return create_theme
-'''	
+
 involke_theme(theme1)
 involke_theme(theme2)
-	
+
 if db_test(theme2[0]):
 	pass
 else:
 	theme = Themes.objects.create_theme("Plasma-js","gallery/plasma.html",True)
-'''
+

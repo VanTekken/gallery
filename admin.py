@@ -4,7 +4,7 @@ from .models import Images,Themes
 # Register your models here.
 
 #admin.site.register(Images)
-#admin.site.register(Themes)
+#admin.site.register(FileUpload)
 
 #@admin.register(Background)
 
