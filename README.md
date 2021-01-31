@@ -1,4 +1,4 @@
-# Gallery app for the Django framework.
+# Gallery app for Django.
 
 Note: Tested on Django 2.2 only. To install a specific version of Django, do the following:
 1. Uninstall your current version `sudo pip uninstall django`
